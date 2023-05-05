@@ -14,5 +14,7 @@
             "email": "artpare4@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "ext-pdo": "*"
+    }
 }
