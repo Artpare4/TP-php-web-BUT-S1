@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 require_once '../vendor/autoload.php';
 use Database\MyPdo;
+use Html\WebPage;
 
-$html=<<<HTML
-    <!DOCTYPE html>
-    <html>
-    
-        <head>
-            <title>Liste des artistes</title>
-        </head>
-        <body> \n
-HTML;
+$webPage=new WebPage();
+
+$webPage->setTitle("Liste des artistes");
 
 MyPDO::setConfiguration('mysql:host=mysql;dbname=cutron01_music;charset=utf8', 'web', 'web');
 
@@ -26,14 +21,11 @@ SQL
 );
 
 $stmt->execute();
+$content="";
 
 while (($ligne = $stmt->fetch()) !== false) {
-    $html.= "<p>{$ligne['name']}</p>\n";
+    $content.= "<p>{$ligne['name']}</p>\n";
 }
+$webPage->appendContent($content);
+echo $webPage->toHTML();
 
-$html.=<<<HTML
-    </body>
-</html>
-HTML;
-
-echo $html;
