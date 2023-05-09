@@ -28,4 +28,3 @@ while (($ligne = $stmt->fetch()) !== false) {
 }
 $webPage->appendContent($content);
 echo $webPage->toHTML();
-
