@@ -1,8 +1,11 @@
 # Développement d'une application Web de consultation et modification de morceaux de musique
 ## Parent Arthur
 ## Installation / Configuration
+### Configuration de la base de donnée
+Les informations du fichier .mydpo.ini est utilisé lors de la connection à la base de donnée et permet de se connecter lors de l'utilisation de MyPDO::getInstance
 ### Serveur web local:
 1. Placez-vous dans la racine de votre projet
+
 2. Exécuter cette commande pour lancer le serveur web 
     ```php -d display_errors -S localhost:8000 -t public/```
 
@@ -38,3 +41,4 @@ Cette commande permet de lancer une vérification du code en utilisant cs-fixer
 composer "fix:cs"
 ```
 Cette commande permet de lancer une correction du code en utilisant cs-fixer
+
