@@ -6,6 +6,7 @@ use Html\WebPage;
 $artistId=17;
 $webpage=new \Html\WebPage();
 $content="";
+## requête pour extraire le nom de l'artiste
 $stmt = MyPDO::getInstance()->prepare(
     <<<'SQL'
     SELECT name
@@ -14,9 +15,12 @@ $stmt = MyPDO::getInstance()->prepare(
 SQL);
 $stmt->execute([':artistId'=>$artistId]);
 $ligne=$stmt->fetch(PDO::FETCH_ASSOC);
+
+## requête
+
 ## Ajout du titre
 $content=<<<HTML
-    <h1>{$ligne['name']}</h1>
+    <h1>Albums de {$ligne['name']}</h1>
 HTML;
 $webpage->appendContent($content);
 ## Ajout du titre de la page
