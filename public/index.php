@@ -24,7 +24,7 @@ $stmt->execute();
 $content="";
 
 while (($ligne = $stmt->fetch()) !== false) {
-    $content.= "<p>{$ligne['name']}</p>\n";
+    $content.= "<p>{$webPage->escapeString($ligne['name'])}</p>\n";
 }
 $webPage->appendContent($content);
 echo $webPage->toHTML();
