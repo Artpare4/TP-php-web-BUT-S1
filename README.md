@@ -22,3 +22,8 @@ le fichier original et après sa correction sans pour autant le modifier
 php vendor/bin/php-cs-fixer fix
 ```
 Cette commande permet de corriger les fichiers grâce à php-cs-fixer
+
+```
+composer "start:linux"
+```
+Cette commande permet de lancer un serveur Web local grâce à composer
