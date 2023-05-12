@@ -4,7 +4,23 @@
 use Database\MyPdo;
 use Html\WebPage;
 
-$artistId=17;
+## contrôle sur le  artist ID
+if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false){
+    if(ctype_digit($_GET['artistId'])==false){
+        header("HTTP/1.1 302 Found");
+        header("Location: /index.php");
+        exit();
+    }
+    else{
+        $artistId=$_GET['artistId'];
+    }
+}
+else{
+    header("HTTP/1.1 302 Found");
+    header("Location: /index.php");
+    exit();
+}
+
 $webpage=new \Html\WebPage();
 $content="";
 
@@ -18,7 +34,11 @@ $stmt = MyPDO::getInstance()->prepare(
 SQL);
 $stmt->execute([':artistId'=>$artistId]);
 $ligne=$stmt->fetch(PDO::FETCH_ASSOC);
-
+## test pour savoir si l'artiste existe bien dans la base de donnée
+if (empty($ligne)==true){
+    http_response_code(404);
+    exit();
+}
 ## Ajout du titre
 $content=<<<HTML
     <h1>Albums de {$webpage->escapeString($ligne['name'])}</h1>
