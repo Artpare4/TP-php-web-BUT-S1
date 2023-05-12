@@ -10,7 +10,6 @@ $webPage=new WebPage();
 $webPage->setTitle("Liste des artistes");
 
 
-
 $stmt = MyPDO::getInstance()->prepare(
     <<<'SQL'
     SELECT id, name
