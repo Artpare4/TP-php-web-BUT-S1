@@ -22,7 +22,7 @@ $stmt->execute();
 $content="";
 
 while (($ligne = $stmt->fetch()) !== false) {
-    $content.= "<p>{$webPage->escapeString($ligne['name'])}</p>\n";
+    $content.= "<a href='http://localhost:8000/artist.php?artistId={$ligne['id']}'>{$webPage->escapeString($ligne['name'])}</a><br>";
 }
 $webPage->appendContent($content);
 echo $webPage->toHTML();
