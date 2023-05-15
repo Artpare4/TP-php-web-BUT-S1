@@ -5,17 +5,15 @@ use Database\MyPdo;
 use Html\WebPage;
 
 ## contrôle sur le  artist ID
-if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false){
-    if(ctype_digit($_GET['artistId'])==false){
+if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
+    if(ctype_digit($_GET['artistId'])==false) {
         header("HTTP/1.1 302 Found");
         header("Location: /index.php");
         exit();
-    }
-    else{
+    } else {
         $artistId=$_GET['artistId'];
     }
-}
-else{
+} else {
     header("HTTP/1.1 302 Found");
     header("Location: /index.php");
     exit();
@@ -31,11 +29,12 @@ $stmt = MyPDO::getInstance()->prepare(
     SELECT name
     FROM artist
     WHERE id=:artistId
-SQL);
+SQL
+);
 $stmt->execute([':artistId'=>$artistId]);
 $ligne=$stmt->fetch(PDO::FETCH_ASSOC);
 ## test pour savoir si l'artiste existe bien dans la base de donnée
-if (empty($ligne)==true){
+if (empty($ligne)==true) {
     http_response_code(404);
     exit();
 }
@@ -58,12 +57,13 @@ $stmt2=MyPdo::getInstance()->prepare(
     WHERE a.artistId=ar.id
     AND a.artistId=:artistId
     ORDER BY a.year DESC,a.name ;
-SQL);
+SQL
+);
 $stmt2->execute([':artistId'=>$artistId]);
 $albumArray="";
 
 ## Ajout des album de l'artiste
-while(($album= $stmt2->fetch(PDO::FETCH_ASSOC)) !== FALSE) {
+while(($album= $stmt2->fetch(PDO::FETCH_ASSOC)) !== false) {
     $albumArray.=<<<HTML
     <p>{$webpage->escapeString($album['year'])} {$webpage->escapeString($album['name'])}</p>\n 
 HTML;

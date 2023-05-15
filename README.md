@@ -42,3 +42,19 @@ composer "fix:cs"
 ```
 Cette commande permet de lancer une correction du code en utilisant cs-fixer
 
+7.
+```
+composer  test:crud
+```
+Cette commande permet de d'exécuter les test sur crud
+
+8. 
+```
+composer test:codecept
+```
+Cette commande permet d'exécuter les tests de codeception
+9. 
+```
+composer test
+```
+Cette commende permet de lancer les tests de codeception et de cs-fixer
