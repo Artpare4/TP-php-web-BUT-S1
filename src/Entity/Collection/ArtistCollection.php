@@ -16,11 +16,14 @@ class ArtistCollection
         $res=[];
         $request=MyPdo::getInstance()->prepare(<<<SQL
             SELECT id,name
-            FROM artist;
+            FROM artist
+            ORDER BY name;
         SQL);
         $request->execute();
-        $res=$request->fetchAll(PDO::FETCH_CLASS);
-        sort($res);
+        $res=$request->fetchAll(PDO::FETCH_CLASS,Artist::class);
+        ##while (($ligne = $request->fetchAll(PDO::FETCH_CLASS)) !== false) {
+        ##   $res[$ligne->id]=$ligne->name;
+        ##
         return $res;
     }
 }

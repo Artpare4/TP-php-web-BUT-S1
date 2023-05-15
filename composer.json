@@ -8,6 +8,11 @@
             "": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\":"tests/"
+        }
+    },
     "authors": [
         {
             "name": "Arthur Parent",
@@ -18,7 +23,11 @@
         "ext-pdo": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.16"
+        "friendsofphp/php-cs-fixer": "^3.16",
+        "codeception/codeception": "4.2",
+        "codeception/module-phpbrowser": "^2.0",
+        "codeception/module-asserts": "^2.0",
+        "codeception/module-db": "^2.1"
     },
     "scripts": {
         "start:linux": "bin/run-server.sh",
