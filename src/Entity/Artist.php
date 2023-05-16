@@ -2,6 +2,11 @@
 
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Collection\AlbumCollection;
+use Entity\Exception\EntityNotFoundException;
+use PDO;
+
 class Artist
 {
     private int $id;
@@ -23,5 +28,33 @@ class Artist
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @param int $id
+     * @return Artist
+     */
+    public function findById(int $id):Artist{
+        $request=MyPdo::getInstance()->prepare(
+            <<<SQL
+            SELECT id,name
+            FROM artist
+            WHERE id=:artistId
+            SQL);
+        $request->execute([':artistId'=>$id]);
+        $request->setFetchMode(PDO::FETCH_CLASS,Artist::class);
+        $res=$request->fetch();
+        if ($res==false){
+            throw new EntityNotFoundException('L\'id n\'a pas d`\'artiste associé');
+        }
+        return $res;
+    }
+
+    /**
+     * @return Album[]
+     */
+    public function getAlbums():array{
+        $res=AlbumCollection::findByArtistId($this->getId());
+        return $res;
     }
 }
