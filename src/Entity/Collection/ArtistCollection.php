@@ -22,9 +22,6 @@ class ArtistCollection
         SQL);
         $request->execute();
         $res=$request->fetchAll(PDO::FETCH_CLASS, Artist::class);
-        ##while (($ligne = $request->fetchAll(PDO::FETCH_CLASS)) !== false) {
-        ##   $res[$ligne->id]=$ligne->name;
-        ##
         return $res;
     }
 }
