@@ -15,11 +15,11 @@ class AlbumCollection
     public function findByArtistId(int $artistId):array{
         $request=MyPdo::getInstance()->prepare(
             <<<SQL
-            SELECT al.name,al.year,ar.name
+            SELECT al.id,al.name,al.year,al.artistID,al.genreId,al.coverId
             FROM artist ar,
                 album al
-            WHERE al.artistId=ar.artistId
-            AND al.artisitID:artistId
+            WHERE al.artistId=ar.id
+            AND al.artistID=:artistId
             ORDER BY al.year DESC,al.name;
         SQL);
         $request->execute([':artistId'=>$artistId]);

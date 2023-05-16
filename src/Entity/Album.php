@@ -8,7 +8,7 @@ class Album
     private string $name;
     private int $year;
     private int $artistId;
-    private int $genreld;
+    private int $genreId;
     private int $coverId;
 
     /**
@@ -51,9 +51,9 @@ class Album
      * Méthode de la classe Album. Cette méthode retourne un entier correspondant à l'ID du genre de l'album.
      * @return int
      */
-    public function getGenreld(): int
+    public function getGenreId(): int
     {
-        return $this->genreld;
+        return $this->genreId;
     }
 
     /**
