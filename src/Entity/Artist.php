@@ -34,7 +34,7 @@ class Artist
      * @param int $id
      * @return Artist
      */
-    public function findById(int $id):Artist{
+    public static function findById(int $id):Artist{
         $request=MyPdo::getInstance()->prepare(
             <<<SQL
             SELECT id,name

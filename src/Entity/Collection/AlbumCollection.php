@@ -4,6 +4,7 @@ namespace Entity\Collection;
 
 use Database\MyPdo;
 use Entity\Album;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class AlbumCollection
