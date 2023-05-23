@@ -2,6 +2,8 @@
 
 
 use Database\MyPdo;
+use Entity\Album;
+use Entity\Collection\AlbumCollection;
 use Html\WebPage;
 
 ## contrôle sur le  artist ID
@@ -24,50 +26,43 @@ $content="";
 
 ## requête pour extraire le nom de l'artiste
 
-$stmt = MyPDO::getInstance()->prepare(
-    <<<'SQL'
-    SELECT name
-    FROM artist
-    WHERE id=:artistId
-SQL
-);
-$stmt->execute([':artistId'=>$artistId]);
-$ligne=$stmt->fetch(PDO::FETCH_ASSOC);
-## test pour savoir si l'artiste existe bien dans la base de donnée
-if (empty($ligne)==true) {
-    http_response_code(404);
-    exit();
-}
+$Artist=new \Entity\Artist();
+$Artiste=$Artist->findById($_GET['artistId']);
+$nomArtist=$Artiste->getName();
+
+
+
+
+
 ## Ajout du titre
+
 $content=<<<HTML
-    <h1>Albums de {$webpage->escapeString($ligne['name'])}</h1>
+    <h1>Albums de {$webpage->escapeString($nomArtist)}</h1>
 HTML;
 $webpage->appendContent($content);
 
 ## Ajout du titre de la page
-$webpage->setTitle($ligne['name']);
+
+$webpage->setTitle($nomArtist);
 
 ## requête pour extraire les albums de cette artiste
-$stmt2=MyPdo::getInstance()->prepare(
-    <<<SQL
-    SELECT a.name,
-           a.year
-    FROM album a,
-        artist ar
-    WHERE a.artistId=ar.id
-    AND a.artistId=:artistId
-    ORDER BY a.year DESC,a.name ;
-SQL
-);
-$stmt2->execute([':artistId'=>$artistId]);
-$albumArray="";
+$listeAlbum=new AlbumCollection();
+$Albums=$listeAlbum->findByArtistId($_GET['artistId']);
+## test pour savoir si l'artiste existe bien dans la base de donnée
 
+if (empty($Albums)==true) {
+    http_response_code(404);
+    exit();
+}
 ## Ajout des album de l'artiste
-while(($album= $stmt2->fetch(PDO::FETCH_ASSOC)) !== false) {
+$albumArray="";
+foreach ($Albums as $album){
     $albumArray.=<<<HTML
-    <p>{$webpage->escapeString($album['year'])} {$webpage->escapeString($album['name'])}</p>\n 
+    <p>{$webpage->escapeString($album->getYear())} {$webpage->escapeString($album->getName())}</p>\n 
 HTML;
 }
+
 $webpage->appendContent($albumArray);
+
 
 echo $webpage->toHTML();

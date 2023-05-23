@@ -54,7 +54,8 @@ class Artist
      * @return Album[]
      */
     public function getAlbums():array{
-        $res=AlbumCollection::findByArtistId($this->getId());
+        $res= (new Collection\AlbumCollection)->findByArtistId($this->getId());
+
         return $res;
     }
 }
