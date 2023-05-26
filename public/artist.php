@@ -1,11 +1,7 @@
 <?php
 
-
-use Database\MyPdo;
-use Entity\Album;
 use Entity\Collection\AlbumCollection;
 use Html\AppWebPage;
-use Entity\Exception\EntityNotFoundException;
 ## contrôle sur le  artist ID
 if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
     if(ctype_digit($_GET['artistId'])==false) {
@@ -36,11 +32,6 @@ catch  (Exception){
 }
 
 $nomArtist=$Artiste->getName();
-
-
-
-
-
 
 ## Ajout du titre de la page
 
