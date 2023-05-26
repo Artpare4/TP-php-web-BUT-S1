@@ -58,3 +58,15 @@ Cette commande permet d'exécuter les tests de codeception
 composer test
 ```
 Cette commende permet de lancer les tests de codeception et de cs-fixer
+
+10.
+````
+composer start:test:windows
+````
+Cette commande permet de lancer le serveur web local de test sous windows
+
+11.
+````
+composer start:test:linux
+````
+Cette commande permet de lancer le serveur web local de test sous linux
