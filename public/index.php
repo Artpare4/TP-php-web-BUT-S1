@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Html\AppWebPage;
 use Entity\Collection\ArtistCollection;
 
-$webPage=new AppWebPage("Liste des artistes");
+$webPage=new AppWebPage("Liste des Artistes");
 
-$webPage->setTitle("Liste des artistes");
+$webPage->setTitle("Liste des Artistes");
 
 $Artistes= new ArtistCollection();
 $liste_Artistes=$Artistes->findAll();
