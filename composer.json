@@ -39,9 +39,14 @@
         "test:codecept":"php vendor/bin/codecept run",
         "test":[
             "@test:codecept",
-            "@test:cs"],
+            "@test:cs",
+            "@test:browse"],
         "start:test:windows": "bin\\run-test-server.bat",
-        "start:test:linux": "bin/run-test-server.sh"
+        "start:test:linux": "bin/run-test-server.sh",
+        "test:browse": [
+            "php vendor/bin/codecept clean",
+            "php vendor/bin/codecept run Browse"
+        ]
     },
     "config": {
         "process-timeout": 0
