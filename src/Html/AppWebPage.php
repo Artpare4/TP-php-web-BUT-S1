@@ -28,7 +28,9 @@ class AppWebPage extends WebPage
                     <h1>$title</h1>
                 </header>
                 <div class="content">
-                    $body
+                    <div class="list">
+                        $body
+                    </div>
                 </div>
                 <footer class="footer">
                     <div><p class="lastModif">Dernière modification : $dernièreModif</p></div>

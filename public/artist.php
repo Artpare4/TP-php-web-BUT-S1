@@ -4,7 +4,7 @@
 use Database\MyPdo;
 use Entity\Album;
 use Entity\Collection\AlbumCollection;
-use Html\WebPage;
+use Html\AppWebPage;
 
 ## contrôle sur le  artist ID
 if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
@@ -21,7 +21,7 @@ if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
     exit();
 }
 
-$webpage=new \Html\WebPage();
+$webpage=new AppWebPage();
 $content="";
 
 ## requête pour extraire le nom de l'artiste
@@ -34,12 +34,6 @@ $nomArtist=$Artiste->getName();
 
 
 
-## Ajout du titre
-
-$content=<<<HTML
-    <h1>Albums de {$webpage->escapeString($nomArtist)}</h1>
-HTML;
-$webpage->appendContent($content);
 
 ## Ajout du titre de la page
 
@@ -58,7 +52,7 @@ if (empty($Albums)==true) {
 $albumArray="";
 foreach ($Albums as $album){
     $albumArray.=<<<HTML
-    <p>{$webpage->escapeString($album->getYear())} {$webpage->escapeString($album->getName())}</p>\n 
+    <div class="album"><p class="album__year">{$webpage->escapeString($album->getYear())}</p><p class="album__name">{$webpage->escapeString($album->getName())}</p></div>\n 
 HTML;
 }
 
