@@ -1,0 +1,23 @@
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+}
+h1,.lastModif{
+    text-align: center;
+}
+
+.content,.footer,.header{
+    border-style: solid;
+
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-grow: 1;
+}
