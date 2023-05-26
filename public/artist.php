@@ -5,7 +5,7 @@ use Database\MyPdo;
 use Entity\Album;
 use Entity\Collection\AlbumCollection;
 use Html\AppWebPage;
-
+use Entity\Exception\EntityNotFoundException;
 ## contrôle sur le  artist ID
 if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
     if(ctype_digit($_GET['artistId'])==false) {
@@ -27,7 +27,14 @@ $content="";
 ## requête pour extraire le nom de l'artiste
 
 $Artist=new \Entity\Artist();
-$Artiste=$Artist->findById($_GET['artistId']);
+try {
+    $Artiste = $Artist->findById($_GET['artistId']);
+}
+catch  (Exception){
+    http_response_code(404);
+    exit();
+}
+
 $nomArtist=$Artiste->getName();
 
 
@@ -37,17 +44,14 @@ $nomArtist=$Artiste->getName();
 
 ## Ajout du titre de la page
 
-$webpage->setTitle($nomArtist);
+$webpage->setTitle("Albums de {$nomArtist}");
 
 ## requête pour extraire les albums de cette artiste
 $listeAlbum=new AlbumCollection();
 $Albums=$listeAlbum->findByArtistId($_GET['artistId']);
 ## test pour savoir si l'artiste existe bien dans la base de donnée
 
-if (empty($Albums)==true) {
-    http_response_code(404);
-    exit();
-}
+
 ## Ajout des album de l'artiste
 $albumArray="";
 foreach ($Albums as $album){
