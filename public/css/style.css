@@ -21,3 +21,7 @@ h1,.lastModif{
     overflow-y: auto;
     flex-grow: 1;
 }
+.artist{
+    border-style: solid;
+    margin: 5%;
+}
