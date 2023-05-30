@@ -2,12 +2,13 @@
 
 namespace Entity;
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class Cover
 {
     private int $id;
-    private static $jpeg;
+    private string $jpeg;
 
     /**
      * Méthode de la classe cover. Retourne l'id de la cover.
@@ -22,16 +23,16 @@ class Cover
      * Méthode de la classe cover. Retourne la location du fichier jpeg de la Cover
      * @return mixed
      */
-    public static function getJpeg()
+    public function getJpeg()
     {
-        return self::$jpeg;
+        return $this->jpeg;
     }
 
     /**
      * @param int $id
      * @return Cover
      */
-    public function findById(int $idCover):Cover{
+    public static function findById(int $idCover):Cover{
         $request=MyPdo::getInstance()->prepare(
             <<<SQL
         SELECT id,jpeg
@@ -41,6 +42,9 @@ class Cover
         $request->execute([':idCover'=>$idCover]);
         $request->setFetchMode(PDO::FETCH_CLASS,Cover::class);
         $res=$request->fetch();
+        if ($res==false){
+            throw new EntityNotFoundException('L\'id n\'a pas de cover associé');
+        }
         return $res;
     }
 }
