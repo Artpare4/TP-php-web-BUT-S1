@@ -31,6 +31,7 @@ class Artist
     }
 
     /**
+     * Méthode de la classe Artist. Cette méthode retourne les informations de l'artiste ayant l'id passé en paramètre
      * @param int $id
      * @return Artist
      */
@@ -51,6 +52,7 @@ class Artist
     }
 
     /**
+     * Méthode de la classe Artist. Cette méthode retourne les albums de l'artiste.
      * @return Album[]
      */
     public function getAlbums():array{

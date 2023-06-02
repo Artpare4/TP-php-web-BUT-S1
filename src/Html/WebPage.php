@@ -11,6 +11,7 @@ class WebPage
     private string $body;
 
     /**
+     * Méthode de la classe WebPage. Cette méthode construit un nouvel objet webpage ayant pour titre la chaîne de caratère passé en paramètre.
      * @param string $title
      */
     public function __construct(string $title = "")
@@ -21,6 +22,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage. Cette méthode retourne une chaîne de caratère contenant tout le contenu de l'attribut head.
      * @return string
      */
     public function getHead(): string
@@ -29,6 +31,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage. Cette méthode retourne une chaîne de caratère contenant tout le contenu de l'attribut Title.
      * @return string
      */
     public function getTitle(): string
@@ -37,6 +40,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage. Cette méthode retourne une chaîne de caratère contenant tout le contenu de l'attribut Body.
      * @return string
      */
     public function getBody(): string
@@ -45,6 +49,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $title
      */
     public function setTitle(string $title): void
@@ -53,6 +58,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $content
      * @return void
      */
@@ -62,6 +68,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $css
      * @return void
      */
@@ -74,6 +81,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $css
      * @return void
      */
@@ -86,6 +94,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $js
      * @return void
      */
@@ -98,6 +107,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $url
      * @return void
      */
@@ -110,6 +120,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $content
      * @return void
      */
@@ -119,6 +130,7 @@ class WebPage
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @return string
      */
     public function toHTML(): string
@@ -143,6 +155,7 @@ HTML;
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @return string
      */
     public function getLastModification(): string
@@ -151,6 +164,7 @@ HTML;
     }
 
     /**
+     * Méthode de la classe WebPage.
      * @param string $string
      * @return string
      */

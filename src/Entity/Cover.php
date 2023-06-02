@@ -29,6 +29,7 @@ class Cover
     }
 
     /**
+     * Méthode de la classe cover. Ce méthode retourne la cover associé à l'id passé en paramètre
      * @param int $id
      * @return Cover
      */
