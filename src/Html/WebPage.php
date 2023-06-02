@@ -49,7 +49,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode permet de modifier la valeur du titre de la page web.
      * @param string $title
      */
     public function setTitle(string $title): void
@@ -58,7 +58,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode permet l'ajout de contenu dans le head.
      * @param string $content
      * @return void
      */
@@ -68,7 +68,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode ajoute du contenu css dans le head.
      * @param string $css
      * @return void
      */
@@ -81,7 +81,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode ajout l'url d'un fichier css passé en paramètre dans le Head.
      * @param string $css
      * @return void
      */
@@ -94,7 +94,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode ajoute du contenu javascript dans le head.
      * @param string $js
      * @return void
      */
@@ -107,7 +107,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode ajout l'url d'un fichier javacript passé en paramètre dans le Head.
      * @param string $url
      * @return void
      */
@@ -120,7 +120,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode permet d'ajouter d'un contenu dans le Body.
      * @param string $content
      * @return void
      */
@@ -130,7 +130,7 @@ class WebPage
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode retourne une chaîne de caratère produisant la page Web complète.
      * @return string
      */
     public function toHTML(): string
@@ -155,7 +155,7 @@ HTML;
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthode retourne la dernière date de modification du document.
      * @return string
      */
     public function getLastModification(): string
@@ -164,7 +164,7 @@ HTML;
     }
 
     /**
-     * Méthode de la classe WebPage.
+     * Méthode de la classe WebPage. Cette méthdoe retourne la chaîne de caractère en ayant protéger les caractères spéciaux pouvant dégrader la page Web.
      * @param string $string
      * @return string
      */
