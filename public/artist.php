@@ -1,6 +1,7 @@
 <?php
 
 use Entity\Collection\AlbumCollection;
+use Entity\Cover;
 use Html\AppWebPage;
 ## contrôle sur le  artist ID
 if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
@@ -42,12 +43,12 @@ $listeAlbum=new AlbumCollection();
 $Albums=$listeAlbum->findByArtistId($_GET['artistId']);
 ## test pour savoir si l'artiste existe bien dans la base de donnée
 
+## Ajout des album de l'artiste et de leurs cover
 
-## Ajout des album de l'artiste
 $albumArray="";
 foreach ($Albums as $album){
     $albumArray.=<<<HTML
-    <div class="album"><p class="album__year">{$webpage->escapeString($album->getYear())}</p><p class="album__name">{$webpage->escapeString($album->getName())}</p></div>\n 
+    <div class="album"><img class="album__cover" alt="" src="/cover.php?coverId={$album->getCoverId()}" ><div class="album__info"><p class="album__year">{$webpage->escapeString($album->getYear())}</p><p class="album__name">{$webpage->escapeString($album->getName())}</p></div></div>\n 
 HTML;
 }
 

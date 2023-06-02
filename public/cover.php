@@ -5,11 +5,13 @@ declare(strict_types=1);
 use Entity\Exception\EntityNotFoundException;
 use Entity\Exception\ParameterException;
 try {
-    $coverId=$_GET['coverId'];
-    if (ctype_digit($coverId)==false){
+
+
+    if (isset($_GET['coverId'])==false || ctype_digit($_GET['coverId'])==false){
         throw new ParameterException();
     }
-    if (empty($coverId)){
+    $coverId=$_GET['coverId'];
+    if (empty($_GET['coverId'])){
         throw new EntityNotFoundException();
     }
     $coverEntity=new \Entity\Cover();

@@ -41,4 +41,9 @@ h1,.lastModif{
 }
 .album__year,.album__name{
     margin: 2%;
+
+}
+.album__info{
+    display: flex;
+    flex-direction: column;
 }
