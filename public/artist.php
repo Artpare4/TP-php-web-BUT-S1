@@ -3,6 +3,7 @@
 use Entity\Collection\AlbumCollection;
 use Entity\Cover;
 use Html\AppWebPage;
+
 ## contrôle sur le  artist ID
 if (isset($_GET['artistId'])==true||empty($_GET['artistId'])==false) {
     if(ctype_digit($_GET['artistId'])==false) {
@@ -26,8 +27,7 @@ $content="";
 $Artist=new \Entity\Artist();
 try {
     $Artiste = $Artist->findById($_GET['artistId']);
-}
-catch  (Exception){
+} catch  (Exception) {
     http_response_code(404);
     exit();
 }
@@ -46,7 +46,7 @@ $Albums=$listeAlbum->findByArtistId($_GET['artistId']);
 ## Ajout des album de l'artiste et de leurs cover
 
 $albumArray="";
-foreach ($Albums as $album){
+foreach ($Albums as $album) {
     $albumArray.=<<<HTML
     <div class="album"><img class="album__cover" alt="" src="/cover.php?coverId={$album->getCoverId()}" ><div class="album__info"><p class="album__year">{$webpage->escapeString($album->getYear())}</p><p class="album__name">{$webpage->escapeString($album->getName())}</p></div></div>\n 
 HTML;
