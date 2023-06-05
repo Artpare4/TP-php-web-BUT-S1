@@ -1,6 +1,7 @@
 <?php
 
 namespace Entity;
+
 use Database\MyPdo;
 use Entity\Exception\EntityNotFoundException;
 use PDO;
@@ -33,17 +34,19 @@ class Cover
      * @param int $id
      * @return Cover
      */
-    public static function findById(int $idCover):Cover{
+    public static function findById(int $idCover): Cover
+    {
         $request=MyPdo::getInstance()->prepare(
             <<<SQL
         SELECT id,jpeg
         FROM cover
         WHERE id=:idCover
-        SQL);
+        SQL
+        );
         $request->execute([':idCover'=>$idCover]);
-        $request->setFetchMode(PDO::FETCH_CLASS,Cover::class);
+        $request->setFetchMode(PDO::FETCH_CLASS, Cover::class);
         $res=$request->fetch();
-        if ($res==false){
+        if ($res==false) {
             throw new EntityNotFoundException('L\'id n\'a pas de cover associé');
         }
         return $res;

@@ -1,12 +1,12 @@
 <?php
 
 namespace Html;
+
 class AppWebPage extends WebPage
     /**
      * Cette classe AppWebPage hérite de la classe WebPage
      */
 {
-
     /**
      * Méthode de la classe AppWebPage. Cette méthode construit un nouvel objet webpage ayant pour titre la chaîne de caratère passé en paramètre.     * @param string $title
      * Cette méthode appelle le constructeur de la classe parent.

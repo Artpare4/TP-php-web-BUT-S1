@@ -57,17 +57,19 @@ class Artist
      * @param int $id
      * @return Artist
      */
-    public static function findById(int $id):Artist{
+    public static function findById(int $id): Artist
+    {
         $request=MyPdo::getInstance()->prepare(
             <<<SQL
             SELECT id,name
             FROM artist
             WHERE id=:artistId
-            SQL);
+            SQL
+        );
         $request->execute([':artistId'=>$id]);
-        $request->setFetchMode(PDO::FETCH_CLASS,Artist::class);
+        $request->setFetchMode(PDO::FETCH_CLASS, Artist::class);
         $res=$request->fetch();
-        if ($res==false){
+        if ($res==false) {
             throw new EntityNotFoundException('L\'id n\'a pas d`\'artiste associé');
         }
         return $res;
@@ -77,8 +79,9 @@ class Artist
      * Méthode de la classe Artist. Cette méthode retourne les albums de l'artiste.
      * @return Album[]
      */
-    public function getAlbums():array{
-        $res= (new Collection\AlbumCollection)->findByArtistId($this->getId());
+    public function getAlbums(): array
+    {
+        $res= (new Collection\AlbumCollection())->findByArtistId($this->getId());
         return $res;
     }
 }
