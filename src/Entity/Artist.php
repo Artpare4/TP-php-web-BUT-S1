@@ -25,7 +25,7 @@ class Artist
      * @param int|null $id
      * @return Artist
      */
-    public function setId(?int $id): Artist
+    private function setId(?int $id): Artist
     {
         $this->id = $id;
         return $this;
@@ -83,5 +83,16 @@ class Artist
     {
         $res= (new Collection\AlbumCollection())->findByArtistId($this->getId());
         return $res;
+    }
+
+    public function delete(): Artist
+    {
+        $request=MyPdo::getInstance()->prepare(<<<SQL
+        DELETE FROM artist
+        WHERE id=:idArtist;
+        SQL);
+        $request->execute([':idArtist'=>$this->getId()]);
+        $this->setId(null);
+        return $this;
     }
 }
