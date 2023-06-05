@@ -96,7 +96,7 @@ class Artist
         return $this;
     }
 
-    public function save(): Artist
+    public function update(): Artist
     {
         $request=MyPdo::getInstance()->prepare(<<<SQL
         UPDATE artist
@@ -118,5 +118,14 @@ class Artist
         $newArtist->setId($id);
         $newArtist->setName($name);
         return $newArtist;
+    }
+
+    public function insert(): Artist
+    {
+        $request=MyPdo::getInstance()->prepare(<<<SQL
+        INSERT INTO artist VALUES (:idArtist,:nameArtist);
+        SQL);
+        $request->execute([':idArtist'=>$this->getId(),'nameArtist'=>$this->getName()]);
+        return $this;
     }
 }
