@@ -128,4 +128,14 @@ class Artist
         $request->execute([':idArtist'=>$this->getId(),'nameArtist'=>$this->getName()]);
         return $this;
     }
+
+    public function save(): Artist
+    {
+        if ($this->getId()==null) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
 }
