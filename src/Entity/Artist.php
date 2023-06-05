@@ -112,7 +112,7 @@ class Artist
      * @param int|null $id
      * @return Artist
      */
-    public function create(string $name, ?int $id): Artist
+    public function create(string $name, int $id=null): Artist
     {
         $newArtist=new Artist();
         $newArtist->setId($id);
