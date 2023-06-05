@@ -45,14 +45,28 @@ class ArtistCest
 
     public function createWithoutId(CrudTester $I)
     {
-        $artist = (new \Entity\Artist)->create('Nœud Coulant');
+        $artist = (new \Entity\Artist())->create('Nœud Coulant');
         $I->assertNull($artist->getId());
         $I->assertSame('Nœud Coulant', $artist->getName());
     }
     public function createWithId(CrudTester $I)
     {
-        $artist = (new \Entity\Artist)->create('Nœud Coulant', 4);
+        $artist = (new \Entity\Artist())->create('Nœud Coulant', 4);
         $I->assertSame(4, $artist->getId());
+        $I->assertSame('Nœud Coulant', $artist->getName());
+    }
+    /**
+     * @after createWithoutId
+     */
+    public function insert(CrudTester $I)
+    {
+        $artist = (new \Entity\Artist())->create('Nœud Coulant');
+        $artist->save();
+        $I->canSeeNumRecords(1, 'artist', [
+            'id' => 90,
+            'name' => 'Nœud Coulant'
+        ]);
+        $I->assertSame($artist->getId(), 90);
         $I->assertSame('Nœud Coulant', $artist->getName());
     }
 }

@@ -123,9 +123,13 @@ class Artist
     public function insert(): Artist
     {
         $request=MyPdo::getInstance()->prepare(<<<SQL
-        INSERT INTO artist VALUES (:idArtist,:nameArtist);
+        INSERT INTO artist(name) VALUES (:nameArtist);
         SQL);
-        $request->execute([':idArtist'=>$this->getId(),'nameArtist'=>$this->getName()]);
+        $request->execute([
+            ':nameArtist'=>$this->getName()
+        ]);
+        $this->setId(MyPdo::getInstance()->lastInsertId());
+
         return $this;
     }
 
