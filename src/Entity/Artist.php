@@ -96,7 +96,7 @@ class Artist
         return $this;
     }
 
-    public function save():Artist
+    public function save(): Artist
     {
         $request=MyPdo::getInstance()->prepare(<<<SQL
         UPDATE artist
@@ -105,5 +105,18 @@ class Artist
         SQL);
         $request->execute([':nameArtist'=>$this->getName(),':idArtist'=>$this->getId()]);
         return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param int|null $id
+     * @return Artist
+     */
+    public function create(string $name, ?int $id): Artist
+    {
+        $newArtist=new Artist();
+        $newArtist->setId($id);
+        $newArtist->setName($name);
+        return $newArtist;
     }
 }
