@@ -95,4 +95,15 @@ class Artist
         $this->setId(null);
         return $this;
     }
+
+    public function save():Artist
+    {
+        $request=MyPdo::getInstance()->prepare(<<<SQL
+        UPDATE artist
+        SET name=:nameArtist
+        WHERE id=:idArtist;
+        SQL);
+        $request->execute([':nameArtist'=>$this->getName(),':idArtist'=>$this->getId()]);
+        return $this;
+    }
 }
