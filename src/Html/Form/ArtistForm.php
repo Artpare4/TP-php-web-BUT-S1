@@ -26,12 +26,12 @@ class ArtistForm
         return $this->artist;
     }
 
-    public function getHtmlFrom(string $action): string
+    public function getHtmlForm(string $action): string
     {
 
         $res=<<<HTML
-<form method="POST" action="{$action}">
-    <input name="id" type="hidden">
+<form method="post" action="{$action}">
+    <input name="id" type="hidden" value="{$this->artist?->getId()}">
     <label>
         Nom de l'artiste
         <input name="name" type="text" value="{$this->escapeString($this->artist?->getName())}" required>
