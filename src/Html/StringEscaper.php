@@ -18,4 +18,13 @@ trait StringEscaper
         }
         return $res;
     }
+
+    public function stripTagsAndTrim(string $text): string
+    {
+        $res=strip_tags($text);
+        if ($res==null) {
+            $res="";
+        }
+        return $res;
+    }
 }
