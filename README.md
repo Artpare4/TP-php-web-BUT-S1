@@ -1,5 +1,15 @@
 # Développement d'une application Web de consultation et modification de morceaux de musique
 ## Parent Arthur
+Ce dépôt contients touts le fichiers issue des TP de qualité de développement et de DEV IHM réalisé au cours du deuxième semestre ma première année de but informatique.
+Ce TP consite en la création d'un site web de lecteur d'une base de donnée. Le but étant de pourvoir lister les groupes de musique de la base de donnée et de pouvoir voir leurs albums.
+L'autre but de ce tp était de nous introduires au bon principes de développement:
+- utilisation de namespace
+- utilisation de la POO (programmation orienté objet)
+- protection des informations lors déchanges avec la base de donnée
+Et de pourvoir manipuler certains module :
+- codeception (pour les différents tests)
+- composer 
+- cs-fixer
 ## Installation / Configuration
 ### Configuration de la base de donnée
 Les informations du fichier .mydpo.ini est utilisé lors de la connection à la base de donnée et permet de se connecter lors de l'utilisation de MyPDO::getInstance
